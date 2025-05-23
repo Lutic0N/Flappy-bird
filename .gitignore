@@ -1,5 +1,37 @@
-# Object file
-*.o
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+public class PlayerControler
+{
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Jump();
+        }
+    }
 
-# Ada Library Information
-*.ali
+    void Jump()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(1.5f, 0f);
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * 200);
+    }
+
+    private object GetComponent<T>()
+    {
+        throw new NotImplementedException();
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.tag == "Enemy")
+        {
+            SceneManager.LoadScene("Untitled*");
+        }
+    }
+}
+
+public class harpScript
+{
+    
+}
